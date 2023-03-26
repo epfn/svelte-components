@@ -1,0 +1,146 @@
+@mixin selectors($readOnly) {
+	@if $readOnly {
+		&:hover:not(:read-only, [aria-invalid='true']),
+		&:focus:not(:read-only, [aria-invalid='true']) {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:focus {
+			@content;
+		}
+	}
+}
+
+@mixin field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 100%;
+}
+
+@mixin input {
+	&[data-theme='both'] {
+		@apply bg-neutral-50 border-neutral-200;
+		@apply dark:bg-neutral-900 dark:border-neutral-600;
+
+		&:read-only {
+			@apply bg-neutral-200 border-neutral-200;
+			@apply dark:bg-neutral-700 dark:border-neutral-700;
+		}
+	}
+
+	&[data-theme='light'] {
+		@apply bg-neutral-50 border-neutral-200;
+
+		&:read-only {
+			@apply bg-neutral-200 border-neutral-200;
+		}
+	}
+
+	&[data-theme='dark'] {
+		@apply bg-neutral-900 border-neutral-600;
+
+		&:read-only {
+			@apply bg-neutral-700 border-neutral-700;
+		}
+	}
+
+	&[aria-invalid='true'] {
+		&[data-theme='both'] {
+			@apply border-yellow-300 ring-yellow-300;
+			@apply dark:border-yellow-500 dark:ring-yellow-500;
+		}
+
+		&[data-theme='light'] {
+			@apply border-yellow-300 ring-yellow-300;
+		}
+
+		&[data-theme='dark'] {
+			@apply border-yellow-500 ring-yellow-500;
+		}
+	}
+}
+
+@mixin accent($readOnly: true) {
+	&[data-accent='bw'] {
+		&[data-theme='both'] {
+			@include selectors($readOnly) {
+				@apply border-black ring-black;
+				@apply dark:border-white dark:ring-white;
+			}
+		}
+
+		&[data-theme='light'] {
+			@include selectors($readOnly) {
+				@apply border-white ring-white;
+			}
+		}
+
+		&[data-theme='dark'] {
+			@include selectors($readOnly) {
+				@apply border-black ring-black;
+			}
+		}
+	}
+
+	&[data-accent='gray'] {
+		&[data-theme='both'] {
+			@include selectors($readOnly) {
+				@apply border-neutral-300 ring-neutral-300;
+				@apply dark:border-neutral-400 dark:ring-neutral-400;
+			}
+		}
+
+		&[data-theme='light'] {
+			@include selectors($readOnly) {
+				@apply border-neutral-300 ring-neutral-300;
+			}
+		}
+
+		&[data-theme='dark'] {
+			@include selectors($readOnly) {
+				@apply border-neutral-600 ring-neutral-600;
+			}
+		}
+	}
+
+	&[data-accent='blue'] {
+		&[data-theme='both'] {
+			@include selectors($readOnly) {
+				@apply border-blue-300 ring-blue-300;
+				@apply dark:border-blue-600 dark:ring-blue-600;
+			}
+		}
+
+		&[data-theme='light'] {
+			@include selectors($readOnly) {
+				@apply border-blue-300 ring-blue-300;
+			}
+		}
+
+		&[data-theme='dark'] {
+			@include selectors($readOnly) {
+				@apply border-blue-600 ring-blue-600;
+			}
+		}
+	}
+	&[data-accent='pink'] {
+		&[data-theme='both'] {
+			@include selectors($readOnly) {
+				@apply border-pink-300 ring-pink-300;
+				@apply dark:border-pink-600 dark:ring-pink-600;
+			}
+		}
+		&[data-theme='light'] {
+			@include selectors($readOnly) {
+				@apply border-pink-300 ring-pink-300;
+			}
+		}
+		&[data-theme='dark'] {
+			@include selectors($readOnly) {
+				@apply border-pink-600 ring-pink-600;
+			}
+		}
+	}
+}
