@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Drawer from '$lib/components/Drawer.svelte';
+	import FieldPassword from '$lib/components/form/FieldPassword.svelte';
+	import FieldSearch from '$lib/components/form/FieldSearch.svelte';
 	import Menu, { type MenuItem } from '$lib/components/Menu.svelte';
 
 	let isOpen = false;
@@ -18,3 +20,10 @@
 	</Drawer>
 	<Menu {links} type="header" />
 </header>
+
+<main>
+	<div class="flex max-w-xs flex-col gap-4">
+		<FieldPassword label="password" name="password" />
+		<FieldSearch label="search" name="search" />
+	</div>
+</main>

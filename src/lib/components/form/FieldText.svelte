@@ -3,6 +3,7 @@
 	import type { EPFNAccent, EPFNTheme } from './type';
 
 	export let value: string = '';
+	export let placeholder: string = '';
 	export let label: string;
 	export let name: string;
 	export let required: boolean = false;
@@ -24,6 +25,7 @@
 		{name}
 		{readonly}
 		{required}
+		{placeholder}
 		aria-invalid={error}
 		data-theme={theme ?? themeCTX}
 		data-accent={accent ?? accentCTX}
@@ -42,12 +44,12 @@
 	}
 
 	input {
-		@apply form-input transition-colors rounded;
+		@apply form-input rounded transition-colors;
 
 		@include styles.input;
 
 		&:read-only {
-			@apply focus:ring-0 cursor-not-allowed;
+			@apply cursor-not-allowed focus:ring-0;
 		}
 
 		@include styles.accent;

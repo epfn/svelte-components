@@ -88,19 +88,20 @@ Vertical list of animated alerts
 | duration | duration of alert animation in ms                       | number                                                      | 200           |
 | theme    | color theme, 'both' includes both light and dark themes | 'both' \| 'light' \| 'dark'                                 | 'both'        |
 
-## FieldText, FieldEmail, FieldPassword, FieldTextarea, FieldCheckbox
+## FieldText, FieldEmail, FieldPassword, FieldSearch, FieldTextarea, FieldCheckbox
 
 Inputs with label
 
-| prop     | description                                             | type                               | default value |
-| -------- | ------------------------------------------------------- | ---------------------------------- | ------------- |
-| value    | value for input binding                                 | string                             | ""            |
-| label    | text for label                                          | string                             |               |
-| name     | text for input name attribute                           | string                             |               |
-| required | value for input required attribute                      | boolean                            | false         |
-| readonly | value for input readonly attribute                      | boolean                            | false         |
-| error    | value for input aria-invalid attribute                  | boolean                            | false         |
-| hidden   | if true checkbox is hidden                              | boolean                            | false         |
-| rows     | value for textarea rows attribute                       | number                             | 8             |
-| theme    | color theme, 'both' includes both light and dark themes | 'both' \| 'light' \| 'dark'        | 'both'        |
-| accent   | color for border and outline on hover or focus          | 'bw' \| 'gray' \| 'blue' \| 'pink' | 'bw'          |
+| prop        | description                                             | type                               | default value |
+| ----------- | ------------------------------------------------------- | ---------------------------------- | ------------- |
+| value       | value for input binding                                 | string                             | ""            |
+| label       | text for label                                          | string                             |               |
+| name        | text for input name attribute                           | string                             |               |
+| placeholder | text for input placeholder attribute                    | string                             | ""            |
+| required    | value for input required attribute                      | boolean                            | false         |
+| readonly    | value for input readonly attribute                      | boolean                            | false         |
+| error       | value for input aria-invalid attribute                  | boolean                            | false         |
+| hidden      | if true checkbox is hidden                              | boolean                            | false         |
+| rows        | value for textarea rows attribute                       | number                             | 8             |
+| theme       | color theme, 'both' includes both light and dark themes | 'both' \| 'light' \| 'dark'        | 'both'        |
+| accent      | color for border and outline on hover or focus          | 'bw' \| 'gray' \| 'blue' \| 'pink' | 'bw'          |
