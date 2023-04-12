@@ -1,4 +1,5 @@
 export { default as Drawer } from './components/Drawer.svelte';
+export { drawerState as drawerState } from './components/Drawer.svelte';
 export { default as Spinner } from './components/Spinner.svelte';
 
 // menu

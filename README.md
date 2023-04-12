@@ -22,11 +22,20 @@ Headless-like side appearing drawer with backdrop. You must provide content (wit
 
 Button position is controlled by putting **Drawer Component** anywhere you like. Drawer position is controlled via **placement** prop.
 
+## Store
+
+You can import **drawerState** store which contain **close** and **toggle** methods.
+
+```svelte
+<script>
+	import { drawerState } from 'epfn-svelte-components';
+</script>
+```
+
 ### Props
 
 | prop      | description                        | type              | default value |
 | --------- | ---------------------------------- | ----------------- | ------------- |
-| isOpen    | state of Drawer                    | boolean           | false         |
 | width     | width of Drawer in px              | number            | 260           |
 | placement | position of Drawer                 | "left" \| "right" | "left"        |
 | duration  | duration of Drawer animation in ms | number            | 150           |

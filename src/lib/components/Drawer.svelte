@@ -1,3 +1,19 @@
+<script context="module" lang="ts">
+	import { writable } from 'svelte/store';
+
+	function createStore() {
+		const { subscribe, set, update } = writable(false);
+
+		return {
+			subscribe,
+			close: () => set(false),
+			toggle: () => update((b) => !b)
+		};
+	}
+
+	export const drawerState = createStore();
+</script>
+
 <script lang="ts">
 	import { BROWSER } from 'esm-env';
 	import { fade, fly } from 'svelte/transition';
@@ -5,11 +21,10 @@
 	export let width = 260;
 	export let duration = 150;
 	export let placement: 'left' | 'right' = 'left';
-	export let isOpen = false;
 
 	$: if (BROWSER) {
 		const body = document.documentElement.querySelector('body');
-		if (body) body.style.overflowY = isOpen ? 'hidden' : 'unset';
+		if (body) body.style.overflowY = $drawerState ? 'hidden' : 'unset';
 	}
 
 	const icons = {
@@ -21,10 +36,10 @@
 
 <svelte:window
 	on:resize={(event) => {
-		if (isOpen) {
+		if ($drawerState) {
 			const prev = event.currentTarget.innerWidth;
 			setTimeout(() => {
-				if (prev !== event.currentTarget.innerWidth) isOpen = false;
+				if (prev !== event.currentTarget.innerWidth) drawerState.close;
 			}, 500);
 		}
 	}}
@@ -35,26 +50,26 @@
 		type="button"
 		aria-controls="main-menu"
 		aria-label="Main Menu Button"
-		aria-expanded={isOpen}
-		on:click={() => (isOpen = !isOpen)}
+		aria-expanded={$drawerState}
+		on:click={drawerState.toggle}
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
-			fill="var(--drawer-{isOpen ? 'close' : 'open'}-button-color, black)"
+			fill="var(--drawer-{$drawerState ? 'close' : 'open'}-button-color, black)"
 			width="24"
 			height="24"
 		>
-			<path fill-rule="evenodd" d={icons[isOpen ? 'close' : 'open']} clip-rule="evenodd" />
+			<path fill-rule="evenodd" d={icons[$drawerState ? 'close' : 'open']} clip-rule="evenodd" />
 		</svg>
 	</button>
 
-	{#if isOpen}
+	{#if $drawerState}
 		<div
 			class="backdrop"
 			transition:fade={{ duration }}
 			on:keydown={() => null}
-			on:click={() => (isOpen = false)}
+			on:click={drawerState.close}
 		/>
 		<div
 			class="content"
