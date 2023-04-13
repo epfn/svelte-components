@@ -1,18 +1,18 @@
-# EPFN Components for SvelteKit
+# EPFN Components for Svelte
 
-Opinionated SvelteKit components for my personal purposes.
+Opinionated Svelte components for my personal purposes.
 
 ## Installation
 
 ```
-npm i epfn-sveltekit-components
+npm i epfn-svelte-components
 ```
 
 ## Import component
 
 ```svelte
 <script>
-	import { Drawer } from 'epfn-sveltekit-components';
+	import { Drawer } from 'epfn-svelte-components';
 </script>
 ```
 
