@@ -1,0 +1,66 @@
+{
+	"name": "epfn-svelte-components",
+	"version": "0.4.0",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run package",
+		"build:sass": "sass --no-source-map src/styles/scss:src/styles/css",
+		"build:postcss": "postcss src/styles/css --dir src/lib/css",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package && publint",
+		"prepublishOnly": "npm run package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"peerDependencies": {
+		"svelte": "^5.0.0-next.26"
+	},
+	"devDependencies": {
+		"@melt-ui/pp": "^0.1.4",
+		"@melt-ui/svelte": "^0.66.2",
+		"@sveltejs/adapter-auto": "^3.0.1",
+		"@sveltejs/kit": "^2.0.6",
+		"@sveltejs/package": "^2.2.4",
+		"@sveltejs/vite-plugin-svelte": "^3.0.1",
+		"@tailwindcss/forms": "^0.5.7",
+		"@tailwindcss/typography": "^0.5.10",
+		"@typescript-eslint/eslint-plugin": "^6.15.0",
+		"@typescript-eslint/parser": "^6.15.0",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"postcss": "^8.4.32",
+		"postcss-cli": "^11.0.0",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"publint": "^0.2.6",
+		"svelte": "5.0.0-next.26",
+		"svelte-check": "^3.6.2",
+		"svelte-sequential-preprocessor": "^2.0.1",
+		"tailwindcss": "^3.4.0",
+		"tslib": "^2.6.2",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.10"
+	},
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/epfn/svelte-components"
+	}
+}
