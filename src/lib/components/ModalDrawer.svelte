@@ -17,6 +17,7 @@
 		size?: number | 'full' | 'auto';
 		backdrop?: boolean;
 		class?: string;
+		rootID: string;
 	};
 
 	let {
@@ -32,7 +33,8 @@
 		placement = 'left',
 		size = 'auto',
 		backdrop = false,
-		class: className
+		class: className,
+		rootID
 	} = $props<Props>();
 
 	function closeMenu() {
@@ -70,6 +72,25 @@
 		if (typeof size === 'number') return `minmax(auto, ${size}px)`;
 	}
 
+	function portal(node: HTMLElement, name: string) {
+		// find an element with this ID somewhere in the document
+		let slot = document.getElementById(name);
+		// move this node to that element
+		slot?.appendChild(node);
+
+		const content = document.getElementById(id);
+		if (content) {
+			content.focus();
+		}
+
+		return {
+			destroy() {
+				// remove the node when component is destroyed
+				node.remove();
+			}
+		};
+	}
+
 	$effect(() => {
 		if ($open) {
 			//hide scroll and preserve width
@@ -94,6 +115,7 @@
 
 {#if $open}
 	<div
+		use:portal={rootID}
 		class="wrap"
 		style:inset={`${top}px ${right}px ${bottom}px ${left}px`}
 		style:grid-template-columns={`${side('left')} ${side('right')}`}

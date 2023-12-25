@@ -66,6 +66,7 @@
 		<HamburgerButton for={id} {open} class="border rounded p-1" />
 
 		<MobileMenu
+			rootID="body"
 			{id}
 			{placement}
 			{top}
